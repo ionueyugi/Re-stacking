@@ -1,0 +1,58 @@
+<div class="container">
+	<div class="row">
+		<div class="col">
+			<table class="table">
+		            <tbody>
+		            <tr>
+		                <th>
+		                	<%= attachment_image_tag @user, :profiel_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
+		                    <span>名前:</span>
+		                    <span class="profile_name"><%= @user.first_name %></span>
+		                    <span class="profile_name"><%= @user.last_name %></span>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>
+		                    <sapn>フリガナ:</sapn>
+		                    <span class="profile_name"><%= @user.first_name_kana %></span>
+		                    <span class="profile_name"><%= @user.last_name_kana %></span>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>
+		                    <span>ニックネーム:</span>
+		                    <span class="profile_name"><%= @user.nick_name %></span>
+		                </th>
+		            </tr>
+		            <tr>
+		                <th>
+		                    <p>目標:</p>
+		                    <span class="profile_goal"><%= @user.goal %></span>
+		                </th>
+		            </tr>
+		            <tr>
+		            	<th>
+		            		<p>メールアドレス:</p>
+		            	　　 <span class="profile_email"><%= @user.email %></span>
+		            	</th>
+		            </tr>
+		            </tbody>
+		        </table>
+<p>Find me in app/views/publics/users/show.html.erb</p>
+<li class="navlist">
+ <%= link_to "ログアウト",  destroy_user_session_path, :method => :delete, method: :delete, class:"btn btn-default" %>
+</li>
+
+<%= link_to "投稿" %>
+<div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-body">
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-primary">投稿する</button>
+        </div>
+      </div>
+    </div>
+  </div>

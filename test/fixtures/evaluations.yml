@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  schedule_id: 1
+  achievement_score: 1
+  quality_score: 1
+  time_score: 1
+  total_point: 1
+  memo: MyText
+
+two:
+  schedule_id: 1
+  achievement_score: 1
+  quality_score: 1
+  time_score: 1
+  total_point: 1
+  memo: MyText
