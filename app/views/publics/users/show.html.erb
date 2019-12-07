@@ -1,11 +1,11 @@
 <div class="container">
+	<h2>マイページ</h2>
 	<div class="row">
 		<div class="col">
 			<table class="table">
 		            <tbody>
 		            <tr>
 		                <th>
-		                	<%= attachment_image_tag @user, :profiel_image, :fill, 100, 100, format: 'jpeg', fallback: "no_image.jpg" %>
 		                    <span>名前:</span>
 		                    <span class="profile_name"><%= @user.first_name %></span>
 		                    <span class="profile_name"><%= @user.last_name %></span>
@@ -38,11 +38,37 @@
 		            </tr>
 		            </tbody>
 		        </table>
-<p>Find me in app/views/publics/users/show.html.erb</p>
-<li class="navlist">
- <%= link_to "ログアウト",  destroy_user_session_path, :method => :delete, method: :delete, class:"btn btn-default" %>
-</li>
 
+		        <h1>11章【タブメニューを作ってみよう】</h1>
+ 
+    <div class="wrap">
+      <ul id="tab-menu" class="clearfix">
+        <li><a href="#tab1" class="active">TAB1</a></li>
+        <li><a href="#tab2" class="">TAB2</a></li>
+        <li><a href="#tab3" class="">TAB3</a></li>
+        <li><a href="#tab4" class="">TAB4</a></li>
+      </ul>
+ 
+      <div id="tab-contents" class="clearfix">
+        <div id="tab1" class="tab">
+          <p>TAB1のテキストが入ります。</p>
+        </div>
+ 
+        <div id="tab2" class="tab">
+          <p>TAB2のテキストが入ります。TAB２のテキストが入ります。</p>
+        </div>
+ 
+        <div id="tab3" class="tab">
+          <p>TAB3のテキストが入ります。TAB３のテキストが入ります。TAB3のテキストが入ります。</p>
+        </div>
+ 
+        <div id="tab4" class="tab">
+          <p>TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。TAB4のテキストが入ります。</p>
+        </div>
+      </div>
+    </div>
+	<script type="text/javascript" src="js/jquery.min.js"></script>
+	<script type="text/javascript" src="js/script.js"></script>
 <%= link_to "投稿" %>
 <div class="modal fade" id="post" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">

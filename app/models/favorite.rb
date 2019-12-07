@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
-	has_many :posts, dependent: :destroy
+	balongs_to :posts
 	belongs_to :user
 end
