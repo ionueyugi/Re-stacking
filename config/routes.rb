@@ -49,7 +49,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :publics do
-    resources :posts, only: [:index, :show, :new, :create, :destroy]do
+    resources :posts, only: [:index, :show, :create, :destroy]do
     	resource :post_comments, only: [:create, :destroy]
     	resource :favorites, only: [:create, :destroy]
     end

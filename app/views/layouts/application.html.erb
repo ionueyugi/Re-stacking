@@ -7,8 +7,64 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
   </head>
-
+    <div id="sp-menu">
+      <h2>MENU</h2>
+      <% if user_signed_in? %>
+        <ul>
+          <li>
+            <%= link_to 'ログアウト',destroy_user_session_path %>
+          </li>
+          <li>
+            <%= link_to 'マイページ', user_path(current_user.id) %>
+          </li>
+          <li>
+           <%= link_to 'カレンダー',schedules_path %>
+          </li>
+          <li>
+           <%= link_to 'みんなの投稿',posts_path %>
+          </li>
+          <li>
+           <%= link_to '達成グラフ' %>
+          </li>
+        </ul>
+        <% elsif admin_signed_in? %>
+          <ul>
+            <li>
+              <%= link_to '登録ユーザー一覧',admins_users_path %>
+            </li>
+            <li>
+              <%= link_to '投稿一覧', admins_posts_path %>
+            </li>
+            <li>
+              <%= link_to '結果内容変更', admins_results %>
+            </li>
+          </ul>
+        <% else %>
+        <span></span><br>
+          <ul>
+            <li>
+              <%= link_to "会員登録", new_user_registration_path %>
+            </li>
+            <li>
+              <%= link_to "ログイン", new_user_session_path %>
+            </li>
+          </ul>
+      <% end %>
+      <% path = Rails.application.routes.recognize_path(request.path) %>
+         <% if path[:controller] == "admins/sessions" && path[:action] == "new" %>
+         <% end %>
+    </div>
+    <div id="hm-icon">
+      <a class="menu-trigger" href="#">
+        <span></span>
+        <span></span>
+        <span></span>
+      </a>
+    </div>
   <body>
     <%= yield %>
   </body>
