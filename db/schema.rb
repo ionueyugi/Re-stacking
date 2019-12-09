@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_063615) do
+ActiveRecord::Schema.define(version: 2019_12_09_080908) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -68,6 +68,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.string "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -75,6 +76,8 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id", unique: true
+    t.index ["following_id"], name: "index_relationships_on_following_id", unique: true
   end
 
   create_table "results", force: :cascade do |t|
@@ -116,7 +119,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.string "last_name_kana"
     t.string "nick_name"
     t.string "goal"
-    t.string "profiel_image_id"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,9 +1,5 @@
 Rails.application.routes.draw do
-  namespace :admins do
-    get 'users/index'
-    get 'users/show'
-  end
-	root 'publics/abouts#about'
+  root 'publics/abouts#about'
 	devise_for :admins, controllers: {
 		sessions: 'admins/sessions',
 		passwords: 'admins/passwords',
@@ -15,7 +11,6 @@ Rails.application.routes.draw do
 	    passwords: 'publics/passwords',
 	    registrations: 'publics/registrations'
 	}
-
   namespace :admins do
     resources :results, only: [:index, :update]
   end
@@ -61,11 +56,15 @@ Rails.application.routes.draw do
   end
 
   scope module: :publics do
-    resources :users, only: [:show, :update]do
+    resources :users, only: [:show, :update, :destroy]do
       resources :relationships, only: [:create, :destroy]
       get :follows, on: :member
       get :followers, on: :member
     end
+  end
+
+  scope module: :publics do
+    resources :relationships, only: [:create, :destroy]
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

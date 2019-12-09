@@ -1,2 +1,2 @@
 $('input[type="text"]').val('');
-$('#post').modal('hide');
+$('#edit').modal('hide');
