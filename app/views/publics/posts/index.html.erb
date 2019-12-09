@@ -30,9 +30,25 @@
             <%= attachment_image_tag f, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
           <% end %>
         </div>
-          <i><%= f.post_content %></br><i>
-          <i>いいね<%= f.favorites.count %></br></i>
-          <i>コメント <%= f.post_comments.count %></i>
+        <div class="post-date">
+          <%= f.created_at.strftime('%Y/%m/%d') %>
+        </div>
+        <div class="post-profile">
+          <%= link_to user_path(@f.user.id) do %>
+            <%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+          <% end %>
+        </div>
+        <div class="post-content">
+          <p><%= f.post_content %></br></p>
+        </div>
+        <div class="post-status">
+          <i class="fa fa-user"><%= f.user.nick_name %></i>
+          <div id="favorite_btn">
+            <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
+          </div>
+          <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
+          <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
+        </div>
       </div>
     </div>
   <% end %>
