@@ -6,16 +6,18 @@
 				<%= attachment_image_tag @user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
 			</div>
 			<div class="profile2">
-				<p>
-			        <span>名前:</span>
-			        <span class="profile_name"><%= @user.first_name %></span>
-			        <span class="profile_name"><%= @user.last_name %></span>
-		    	</p>
-		    	<p>
-			        <sapn>フリガナ:</sapn>
-			        <span class="profile_name"><%= @user.first_name_kana %></span>
-			        <span class="profile_name"><%= @user.last_name_kana %></span>
-	   			</p>
+				<% if @user == current_user %>
+					<p>
+				        <span>名前:</span>
+				        <span class="profile_name"><%= @user.first_name %></span>
+				        <span class="profile_name"><%= @user.last_name %></span>
+			    	</p>
+			    	<p>
+				        <sapn>フリガナ:</sapn>
+				        <span class="profile_name"><%= @user.first_name_kana %></span>
+				        <span class="profile_name"><%= @user.last_name_kana %></span>
+		   			</p>
+	   			<% end %>
 	   			<P>
 			        <span>ニックネーム:</span>
 			        <span class="profile_name"><%= @user.nick_name %></span>
@@ -24,61 +26,66 @@
 		        	<span>目標:</span>
 		        	<span class="profile_goal"><%= @user.goal %></span>
 	    		</p>
-	    		<p>
-					<span>メールアドレス:</span>
-				　　 <span class="profile_email"><%= @user.email %></span>
-				</p>
+	    		<% if @user == current_user %>
+		    		<p>
+						<span>メールアドレス:</span>
+					　　 <span class="profile_email"><%= @user.email %></span>
+					</p>
+				<% end %>
 			</div>
+		    <%= render 'publics/users/follow_form', users: @user %>
 			<div class="edit clearfix">
-				<div class="profile-button">
-					<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">プロフィールを編集する</button>
-					<p>
-				  		<%= link_to "退会する", user_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか?" %>
-				  		<%= render 'publics/users/follow_form', users: @user %>
-				  	</p>
-			  	</div>
-				  <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
-				    <div class="modal-dialog" role="document">
-				      <div class="modal-content">
-				        <%= form_with model: @user do |f| %>
-				          <div class="modal-body">
-				          	<P>
-					            <span>画像</span>
-					            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
-								<%= f.attachment_field :profile_image %>
-				        	</P>
-				            <P>
-					            <span>名前</span>
-					            <span><%= f.text_field :first_name, class: "form-control" %></span>
-					            <span><%= f.text_field :last_name, class: "form-control" %></span>
-				        	</P>
-				        	<P>
-					            <span>フリガナ</span>
-					            <span><%= f.text_field :first_name_kana, class: "form-control" %></span>
-					            <span><%= f.text_field :last_name_kana, class: "form-control" %></span>
-				        	</P>
-				        	<P>
-					            <span>ニックネーム</span>
-					            <span><%= f.text_field :nick_name, class: "form-control" %></span>
-				        	</P>
-				        	<P>
-					            <span>目標</span>
-					            <span><%= f.text_field :goal, class: "form-control" %></span>
-				        	</P>
-				        	<P>
-					            <span>メールアドレス</span>
-					            <span><%= f.text_field :email, class: "form-control" %></span>
-				        	</P>
-				          </div>
-				          <div class="modal-footer">
-				            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-				            <%= f.submit "変更する", class: "btn btn-primary" %>
-				          </div>
-				        <% end %>
-				      </div>
-				    </div>
-				  </div>
-			</div>
+				<% if @user == current_user %>
+					<div class="profile-button">
+						<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">プロフィールを編集する</button>
+						<p>
+					  		<%= link_to "退会する", user_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に退会しますか?" %>
+					  	</p>
+					</div>
+					<div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-hidden="true">
+					    <div class="modal-dialog" role="document">
+					      <div class="modal-content">
+					        <%= form_with model: @user do |f| %>
+					          <div class="modal-body">
+					          	<P>
+						            <span>画像</span>
+						            <%= attachment_image_tag @user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+									<%= f.attachment_field :profile_image %>
+					        	</P>
+					            <P>
+						            <span>名前</span>
+						            <span><%= f.text_field :first_name, class: "form-control" %></span>
+						            <span><%= f.text_field :last_name, class: "form-control" %></span>
+					        	</P>
+					        	<P>
+						            <span>フリガナ</span>
+						            <span><%= f.text_field :first_name_kana, class: "form-control" %></span>
+						            <span><%= f.text_field :last_name_kana, class: "form-control" %></span>
+					        	</P>
+					        	<P>
+						            <span>ニックネーム</span>
+						            <span><%= f.text_field :nick_name, class: "form-control" %></span>
+					        	</P>
+					        	<P>
+						            <span>目標</span>
+						            <span><%= f.text_field :goal, class: "form-control" %></span>
+					        	</P>
+					        	<P>
+						            <span>メールアドレス</span>
+						            <span><%= f.text_field :email, class: "form-control" %></span>
+					        	</P>
+					          </div>
+					          <div class="modal-footer">
+					            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+					            <%= f.submit "変更する", class: "btn btn-primary" %>
+					          </div>
+					        <% end %>
+					      </div>
+					    </div>
+					</div>
+				</div>
+			<% end %>
+		</div>
 			<!-- タブメニューactiveクラスに、クリック済のデザインを設定したcssを指定 -->
 			<div class="tab clearfix">
 			  <li class="active">投稿</li>
