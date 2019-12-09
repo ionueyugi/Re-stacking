@@ -1,4 +1,4 @@
 class Favorite < ApplicationRecord
-	balongs_to :posts
+	belongs_to :post, counter_cache: :likes_count
 	belongs_to :user
 end

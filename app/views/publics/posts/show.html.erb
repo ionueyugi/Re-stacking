@@ -1,2 +1,20 @@
-<h1>Publics::Posts#show</h1>
-<p>Find me in app/views/publics/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="posta">
+    	<div class="col text-center">
+        <%= attachment_image_tag @post, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
+      </div>
+      <li>
+        <i class="fa fa-calendar"><%= @post.created_at.strftime('%Y/%m/%d') %></i>
+      </li>
+      <p class="post-title"><%= @post.post_content %></br></p>
+      <i class="fa fa-user"><%= @post.user.nick_name %></i>
+      <div id="favorite_btn">
+        <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
+      </div>
+        <i>いいね<%= @post.favorites.count %></br></i>
+        <i>コメント <%= @post.post_comments.count %></i>
+        <%= link_to '戻る', posts_path, class:"btn btn-default btn-xs" %>
+    </div>
+  </div>
+</div>

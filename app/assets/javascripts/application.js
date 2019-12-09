@@ -14,27 +14,20 @@
 //= require rails-ujs
 //= require activestorage
 //= require bootstrap-sprockets
+//= require jquery.turbolinks
 //= require turbolinks
 //= require_tree.
 
+
+
 //ハンバーガーメニュー
-$(function() {
+$(document).on('turbolinks:load', function() {
   $('.menu-trigger').on('click', function() {
     $(this).toggleClass('active');
     $('#sp-menu').fadeToggle();
     return false;
   });
  });
-
-//タブメニュー
-$('#tab-contents .tab[id != "tab1"]').hide();
-$('#tab-menu a').on('click', function() {
-  $("#tab-contents .tab").hide();
-  $("#tab-menu .active").removeClass("active");
-  $(this).addClass("active");
-  $($(this).attr("href")).show();
-  return false;
-});
 
 //スリックスライド
 $(function() {
@@ -95,3 +88,21 @@ $(function() {
     $('.imag3').slick('goTo', $(this).index());
   });
 });
+
+$(document).on('turbolinks:load', function() {
+  // ①タブをクリックしたら発動
+  $('.tab li').click(function() {
+    // ②クリックされたタブの順番を変数に格納
+    var index = $('.tab li').index(this);
+
+    // ③クリック済みタブのデザインを設定したcssのクラスを一旦削除
+    $('.tab li').removeClass('active');
+    // ④クリックされたタブにクリック済みデザインを適用する
+    $(this).addClass('active');
+
+    // ⑤コンテンツを一旦非表示にし、クリックされた順番のコンテンツのみを表示
+    $('.area ul').removeClass('show').eq(index).addClass('show');
+
+  });
+});
+
