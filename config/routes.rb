@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   namespace :admins do
-    resources :users, only: [:index, :show]
+    resources :users, only: [:index, :show, :destroy]
   end
 
   scope module: :publics do
