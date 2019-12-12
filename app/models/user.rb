@@ -50,6 +50,18 @@ class User < ApplicationRecord
   	end
   end
 
+  # フォロー通知
+  def create_notification_follow!(current_user)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ? ",current_user.id, id, 'follow'])
+    if temp.blank?
+      notification = current_user.active_notifications.new(
+        visited_id: id,
+        action: 'follow'
+      )
+      notification.save if notification.valid?
+    end
+  end
+
   validates :first_name, presence: true
   validates :last_name, presence: true
   validates :first_name_kana, presence: true

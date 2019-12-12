@@ -21,12 +21,12 @@ class Publics::PostsController < Publics::ApplicationController
   def destroy
     @post = Post.find(post_params)
     @post.destroy
-    redirect_to posts_path
+    redirect_to user_path(current_user)
   end
 
 private
     def post_params
-        params.require(:post).permit(:post_content, :post_image)
+        params.require(:post).permit(:post_content, :post_image, :user_id, :likes_count)
     end
 end
 
