@@ -12,11 +12,15 @@
 //
 //= require jquery
 //= require rails-ujs
+//= require moment
+//= require fullcalendar
+//= require fullcalendar/lang/ja
 //= require activestorage
 //= require bootstrap-sprockets
 //= require jquery.turbolinks
 //= require turbolinks
 //= require_tree.
+
 
 
 
@@ -31,7 +35,7 @@ $(document).on('turbolinks:load', function() {
 
 //スリックスライド
 $(function() {
-    $('.img1').slick({
+    $('.about-img1').slick({
         dots: true,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -40,7 +44,7 @@ $(function() {
 
 //スリックスライド（アニメーション）
 $(function() {
-  $('.imag1').slick({
+  $('.about-imag1').slick({
       dots: true,
   });
 
@@ -51,7 +55,7 @@ $(function() {
 
 //スリックスライド
 $(function() {
-    $('.img2').slick({
+    $('.about-img2').slick({
         dots: true,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -60,7 +64,7 @@ $(function() {
 
 //スリックスライド（アニメーション）
 $(function() {
-  $('.imag2').slick({
+  $('.about-imag2').slick({
       dots: true,
   });
 
@@ -71,7 +75,7 @@ $(function() {
 
 //スリックスライド
 $(function() {
-    $('.img3').slick({
+    $('.about-img3').slick({
         dots: true,
         autoplay: true,
         autoplaySpeed: 4000,
@@ -80,12 +84,12 @@ $(function() {
 
 //スリックスライド（アニメーション）
 $(function() {
-  $('.imag3').slick({
+  $('.about-imag3').slick({
       dots: true,
   });
 
   $('.slick-dots li').on('mouseover', function() {
-    $('.imag3').slick('goTo', $(this).index());
+    $('.about-imag3').slick('goTo', $(this).index());
   });
 });
 
@@ -105,4 +109,6 @@ $(document).on('turbolinks:load', function() {
 
   });
 });
+
+
 

@@ -1,2 +1,125 @@
-<h1>Publics::Evaluations#show</h1>
-<p>Find me in app/views/publics/evaluations/show.html.erb</p>
+<div class="container">
+	<h2>評価</h2>
+	<div class="row">
+		<div class="col-lg-9">
+			<div class="event-profile">
+				<span class="box-title">予定詳細</span>
+				<p>
+					<span>タイトル:</span>
+					<span><%= @evaluation.event.title %></span>
+				</p>
+				<p>
+					<span>詳細:</span>
+					<span><%= @evaluation.event.body %></span>
+				</p>
+				<p>
+					<span>日時:</span>
+					<span><%= @evaluation.event.start %> ~ <%= @evaluation.event.end %></span>
+				</p>
+			</div>
+			<!-- チャート描画キャンバス -->
+			<div>
+				<canvas id="myChart"></canvas>
+			</div>
+			<% if @evaluation.achievement_score == 0 || @evaluation.quality_score = 0 || @evaluation.time_score = 0%>
+				<%= @result4.result_content %>
+			<% else %>
+				<% if @total_point.to_i == 15 %>
+					<%= @result1.result_content %>
+						<% elsif @total_point.to_i >= 10 && @total_point.to_i <= 14 %>
+						<%= @result2.result_content %>
+							<% elsif @total_point.to_i >= 3 && @total_point.to_i <= 9 %>
+							<%= @result3.result_content %>
+								<% elsif @total_point.to_i == 0 %>
+								<%= @result4.result_content %>
+				<% end %>
+			<% end %>
+
+			<div style="width:100%;">
+				<canvas id="canvas"></canvas>
+			</div>
+		</div>
+
+
+		<div class="col-lg-3">
+		<%= render 'publics/evaluations/evaluation_update', evaluations: @evaluation %>
+		</div>
+	</div>
+</div>
+
+
+<script>
+
+// 色の設定
+var colorSet = {
+	red: 'rgb(255, 99, 132)',
+	orange: 'rgb(255, 159, 64)',
+	yellow: 'rgb(255, 205, 86)',
+	green: 'rgb(75, 192, 192)',
+	blue: 'rgb(54, 162, 235)',
+	purple: 'rgb(153, 102, 255)',
+	grey: 'rgb(201, 203, 207)'
+};
+
+// 色のRGB変換
+var color = Chart.helpers.color;
+
+/*
+ * チャートの初期設定
+ */
+var config = {
+	type: 'radar',
+	data: {
+		labels: ["達成度", "時間を守れたか", "決めた質をこなせたか"],
+		datasets: [{
+			label: "目標値",
+			backgroundColor: color(colorSet.red).alpha(0.5).rgbString(),
+			borderColor: colorSet.red,
+			pointBackgroundColor: colorSet.red,
+			data: [gon.achievement_targetvalue, gon.quality_targetvalue, gon.time_targetvalue]
+		},{
+			label: "達成評価",
+			backgroundColor: color(colorSet.blue).alpha(0.5).rgbString(),
+			borderColor: colorSet.blue,
+			pointBackgroundColor: colorSet.blue,
+			data: [gon.achievement, gon.quality, gon.time]
+		},]
+	},
+	options: {
+		showTooltips: false,
+		legend: { position: 'bottom' },
+		title: {
+			display: true,
+			fontSize:30,
+			fontColor:'#666',
+			text: '評価'
+		},
+		scale: {
+			display: true,
+			pointLabels: {
+				fontSize: 15,
+				fontColor: colorSet.yellow
+			},
+			ticks: {
+				display: true,
+				fontSize: 15,
+				fontColor: colorSet.green,
+				min: 0,
+				max: 5,
+				beginAtZero: true
+			},
+			gridLines: {
+				display: true,
+				color: colorSet.yellow
+			},
+		}
+	}
+};
+
+/*
+ * チャートの作成
+ */
+var myRadar = new Chart($("#myChart"), config);
+
+</script>
+

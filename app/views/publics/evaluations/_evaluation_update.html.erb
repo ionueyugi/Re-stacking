@@ -1,0 +1,23 @@
+<%= form_for (@evaluation), method: :patch, remote: true do |f| %>
+	<div class="goalscore">
+		<h3>目標値</h3>
+		<p>全体の達成度</p>
+		<%= f.select :achievement_targetvalue_score, {"目標値": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+		<p>決めた質をこなせたか</p>
+		<%= f.select :quality_targetvalue_score, {"目標値": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+		<p>時間を守れたか</p>
+		<%= f.select :time_targetvalue_score, {"目標値": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+	</div>
+	<div class="evaluationscore">
+		<h3>評価値</h3>
+		<p>全体の達成度</p>
+		<%= f.select :achievement_score, {"評価する": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+		<p>決めた質をこなせたか</p>
+		<%= f.select :quality_score, {"評価する": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+		<p>時間を守れたか</p>
+		<%= f.select :time_score, {"評価する": 0, 無理: 1, あまり達成できなかった: 2, 普通: 3, まあまあ達成できた: 4, 達成できた: 5}, {}, {class:"p-region-id"} %>
+	</div>
+	<div id="evaluation">
+		<%= f.submit "保存する", class: "btn btn-primary" %>
+	</div>
+<% end %>

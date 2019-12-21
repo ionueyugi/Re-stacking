@@ -123,7 +123,31 @@
 					<% end %>
 				</ul>
 				<ul>
-					
+					<% @post_comments.each do |f| %>
+				    	<div class="posta">
+					        <div class="col text-center">
+					          <%= link_to post_path(f.post.id) do %>
+					            <%= attachment_image_tag f.post, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
+					          <% end %>
+					        </div>
+					        <div class="post-date">
+					          <%= f.post.created_at.strftime('%Y/%m/%d') %>
+					        </div>
+					        <div class="post-profile">
+					        	<%= link_to user_path(f.post.user.id) do %>
+					            	<%= attachment_image_tag f.post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+					            <% end %>
+					        </div>
+					        <div class="post-content">
+					          <p><%= f.post.post_content %></br></p>
+					        </div>
+					        <div class="post-status">
+					          <i class="fa fa-user"><%= f.post.user.nick_name %></i>
+					          <i class="fas fa-heart">いいね <%= f.post.favorites.count %></br></i>
+					          <i class="far fa-comments"> コメント <%= f.post.post_comments.count %></i>
+					        </div>
+					      </div>
+					<% end %>
 				</ul>
 				<ul>
 				    <% @favorites.each do |f| %>
@@ -137,7 +161,9 @@
 					          <%= f.post.created_at.strftime('%Y/%m/%d') %>
 					        </div>
 					        <div class="post-profile">
-					            <%= attachment_image_tag f.post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+					        	<%= link_to user_path(f.post.user.id) do %>
+					            	<%= attachment_image_tag f.post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+					            <% end %>
 					        </div>
 					        <div class="post-content">
 					          <p><%= f.post.post_content %></br></p>

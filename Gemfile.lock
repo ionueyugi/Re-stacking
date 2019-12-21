@@ -79,6 +79,7 @@ GEM
     chromedriver-helper (2.1.1)
       archive-zip (~> 0.10)
       nokogiri (~> 1.8)
+    chronic (0.10.2)
     cocoon (1.2.14)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -101,6 +102,10 @@ GEM
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.11.3)
+    fullcalendar-rails (3.9.0.0)
+      jquery-rails (>= 4.0.5, < 5.0.0)
+      jquery-ui-rails (>= 5.0.2)
+      momentjs-rails (>= 2.9.0)
     globalid (0.4.2)
       activesupport (>= 4.2.0)
     gon (6.3.2)
@@ -123,6 +128,8 @@ GEM
     jquery-turbolinks (2.1.0)
       railties (>= 3.1.0)
       turbolinks
+    jquery-ui-rails (6.0.1)
+      railties (>= 3.2.16)
     kaminari (1.1.1)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.1.1)
@@ -155,6 +162,8 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.13.0)
+    momentjs-rails (2.20.1)
+      railties (>= 3.1)
     msgpack (1.3.1)
     multi_json (1.14.1)
     mustermann (1.0.3)
@@ -279,6 +288,8 @@ GEM
     websocket-driver (0.7.1)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.4)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     yard (0.9.20)
@@ -295,12 +306,14 @@ DEPENDENCIES
   cocoon
   coffee-rails (~> 4.2)
   devise
+  fullcalendar-rails
   gon
   jbuilder (~> 2.5)
   jquery-rails
   jquery-turbolinks
   kaminari (~> 1.1.1)
   listen (>= 3.0.5, < 3.2)
+  momentjs-rails
   pry-byebug
   pry-doc
   pry-rails
@@ -317,6 +330,7 @@ DEPENDENCIES
   tzinfo-data
   uglifier (>= 1.3.0)
   web-console (>= 3.3.0)
+  whenever
 
 RUBY VERSION
    ruby 2.5.5p157

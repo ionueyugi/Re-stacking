@@ -32,7 +32,7 @@ Rails.application.routes.draw do
   end
 
   scope module: :publics do
-    resources :schedules, only: [:index, :create]
+    resources :events, only: [:index, :create, :update, :destroy]
   end
 
   scope module: :publics do
