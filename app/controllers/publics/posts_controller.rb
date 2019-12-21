@@ -13,8 +13,11 @@ class Publics::PostsController < Publics::ApplicationController
   def create
   	@post = Post.new(post_params)
   	@post.user_id = current_user.id
-  	if @post.save
+  	if @post.save!
       redirect_to posts_path
+    else
+          flash.now[:notbuy] = "お問い合わせフォームを記入してください"
+          render 'index'
     end
   end
 

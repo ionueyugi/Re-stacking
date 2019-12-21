@@ -3,8 +3,8 @@ class Publics::UsersController <  Publics::ApplicationController
   	  @user = User.find(params[:id])
   	  @posts = @user.posts.all
       @favorites = Favorite.where(user_id: @user.id)
-     
-  	end
+      @post_comments = PostComment.where(user_id: @user.id)
+  end
 
   def update
   	@user = User.find(params[:id])
