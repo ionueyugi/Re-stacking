@@ -66,3 +66,10 @@
 .post-comment-date{
     position: relative; top: 40px; right:60px;
 }
+
+div#header-fixed{
+    position: fixed;            /* ヘッダーの固定 */
+    top: 100px;                   /* 位置(上0px) */
+    left: 30px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+}

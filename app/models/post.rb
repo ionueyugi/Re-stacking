@@ -28,5 +28,10 @@ class Post < ApplicationRecord
       notification.save if notification.valid?
     end
   end
+
+  def self.post_destroy
+    posts = Post.where("created_at between '#{Time.zone.now.ago(2.days)}' and '#{Time.zone.now.ago(1.days)}'")
+    posts.delete_all
+  end
   validates :post_content, presence: true
 end

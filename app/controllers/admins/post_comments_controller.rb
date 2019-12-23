@@ -1,4 +1,4 @@
-class Admins::PostCommentsController < Admins::ApplicationController
+class Admins::PostCommentsController < ApplicationController
   def destroy
   end
 end

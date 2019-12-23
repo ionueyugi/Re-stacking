@@ -21,26 +21,26 @@
 			<div>
 				<canvas id="myChart"></canvas>
 			</div>
-			<% if @evaluation.achievement_score == 0 || @evaluation.quality_score = 0 || @evaluation.time_score = 0%>
-				<%= @result4.result_content %>
-			<% else %>
-				<% if @total_point.to_i == 15 %>
-					<%= @result1.result_content %>
-						<% elsif @total_point.to_i >= 10 && @total_point.to_i <= 14 %>
-						<%= @result2.result_content %>
-							<% elsif @total_point.to_i >= 3 && @total_point.to_i <= 9 %>
-							<%= @result3.result_content %>
-								<% elsif @total_point.to_i == 0 %>
-								<%= @result4.result_content %>
+			<div class="event-profile">
+				<span class="box-title">コメント</span>
+				<% if @evaluation.achievement_score == 0 || @evaluation.quality_score = 0 || @evaluation.time_score = 0%>
+					<%= @result4.result_content %>
+				<% else %>
+					<% if @total_point.to_i == 15 %>
+						<%= @result1.result_content %>
+							<% elsif @total_point.to_i >= 10 && @total_point.to_i <= 14 %>
+							<%= @result2.result_content %>
+								<% elsif @total_point.to_i >= 3 && @total_point.to_i <= 9 %>
+								<%= @result3.result_content %>
+									<% elsif @total_point.to_i == 0 %>
+									<%= @result4.result_content %>
+					<% end %>
 				<% end %>
-			<% end %>
-
+			</div>
 			<div style="width:100%;">
 				<canvas id="canvas"></canvas>
 			</div>
 		</div>
-
-
 		<div class="col-lg-3">
 		<%= render 'publics/evaluations/evaluation_update', evaluations: @evaluation %>
 		</div>

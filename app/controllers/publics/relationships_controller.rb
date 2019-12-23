@@ -1,5 +1,7 @@
 class Publics::RelationshipsController < Publics::ApplicationController
-
+	def index
+		
+	end
 	def create
 	  @user = User.find(params[:follower_id])
 	  current_user.follow(@user)
@@ -19,7 +21,7 @@ class Publics::RelationshipsController < Publics::ApplicationController
 	  end
 	end
 
-	private
+  private
   def relationship_params
   	  params.require(:relationship).permit(:follower_id)
   end

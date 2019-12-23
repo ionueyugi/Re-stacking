@@ -10,14 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_21_043316) do
-
-  create_table "achievements", force: :cascade do |t|
-    t.integer "achievement_score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "evaluation_id"
-  end
+ActiveRecord::Schema.define(version: 2019_12_23_064840) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -45,25 +38,15 @@ ActiveRecord::Schema.define(version: 2019_12_21_043316) do
     t.integer "time_targetvalue_score"
   end
 
-  create_table "evaluationtimes", force: :cascade do |t|
-    t.integer "time_score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "evaluation_id"
-  end
-
   create_table "events", force: :cascade do |t|
     t.integer "user_id"
     t.integer "evaluation_id"
-    t.date "day"
     t.text "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.datetime "start"
     t.datetime "end"
-    t.time "start_time"
-    t.time "finish_time"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -102,20 +85,13 @@ ActiveRecord::Schema.define(version: 2019_12_21_043316) do
     t.integer "likes_count"
   end
 
-  create_table "qualities", force: :cascade do |t|
-    t.integer "quality_score"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.integer "evaluation_id"
-  end
-
   create_table "relationships", force: :cascade do |t|
     t.integer "following_id"
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["follower_id"], name: "index_relationships_on_follower_id", unique: true
-    t.index ["following_id"], name: "index_relationships_on_following_id", unique: true
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "results", force: :cascade do |t|

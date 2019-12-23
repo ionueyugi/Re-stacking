@@ -1,9 +1,9 @@
 class Publics::UsersController <  Publics::ApplicationController
   def show
   	  @user = User.find(params[:id])
-  	  @posts = @user.posts.all
-      @favorites = Favorite.where(user_id: @user.id)
-      @post_comments = PostComment.where(user_id: @user.id)
+  	  @posts = @user.posts.order(created_at: "DESC")
+      @favorites = Favorite.where(user_id: @user.id).order(created_at: "DESC")
+      @post_comments = PostComment.where(user_id: @user.id).order(created_at: "DESC")
   end
 
   def update

@@ -2,7 +2,6 @@ class Notification < ApplicationRecord
 	default_scope -> { order(created_at: :desc) }
 	belongs_to :post, optional: true
 	belongs_to :comment, optional: true
-  attachment :profile_image
 
 	belongs_to :visitor, class_name: 'User', foreign_key: 'visitor_id', optional: true
 	belongs_to :visited, class_name: 'User', foreign_key: 'visited_id', optional: true
@@ -23,7 +22,6 @@ class Notification < ApplicationRecord
       end
       notification.save if notification.valid?
     end
-  end
   end
 
   def create_notification_comment!(current_user, comment_id)
@@ -51,17 +49,9 @@ class Notification < ApplicationRecord
       notification.save if notification.valid?
   end
 
-  def notification_form(notification)
-    @comment = nil
-    visitor = link_to notification.visitor.nick_name, notification.visitor
-    your_post = link_to 'あなたの投稿', notification.post, remote: true
-    case notification.action
-      when "follow" then
-        "#{visitor}があなたをフォローしました"
-      when "like" then
-        "#{visitor}が#{your_post}にいいね！しました"
-      when "comment" then
-        @comment = Comment.find_by(id:notification.comment_id)&.content
-        "#{visitor}が#{your_post}にコメントしました"
+  # 予定通知
+  def self.notification
+    posts = Post.where("created_at between '#{Time.zone.now.ago(2.days)}' and '#{Time.zone.now.ago(1.days)}'")
+    posts.delete_all
   end
 end
