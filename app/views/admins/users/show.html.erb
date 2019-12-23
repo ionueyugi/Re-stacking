@@ -52,7 +52,7 @@
 					<% @posts.each do |f| %>
 						<div class="posta">
 					        <div class="col text-center">
-					          <%= link_to post_path(f.id) do %>
+					          <%= link_to admins_post_path(f.id) do %>
 					            <%= attachment_image_tag f, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
 					          <% end %>
 					        </div>
@@ -67,9 +67,6 @@
 					        </div>
 					        <div class="post-status">
 					          <i class="fa fa-user"><%= f.user.nick_name %></i>
-					          <div id="favorite_btn">
-					            <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
-					          </div>
 					          <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
 					          <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
 					        </div>
@@ -80,7 +77,7 @@
 					<% @post_comments.each do |f| %>
 				    	<div class="posta">
 					        <div class="col text-center">
-					          <%= link_to post_path(f.post.id) do %>
+					          <%= link_to admins_post_path(f.post.id) do %>
 					            <%= attachment_image_tag f.post, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
 					          <% end %>
 					        </div>
@@ -88,7 +85,7 @@
 					          <%= f.post.created_at.strftime('%Y/%m/%d') %>
 					        </div>
 					        <div class="post-profile">
-					        	<%= link_to user_path(f.post.user.id) do %>
+					        	<%= link_to admins_user_path(f.post.user.id) do %>
 					            	<%= attachment_image_tag f.post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
 					            <% end %>
 					        </div>
@@ -107,7 +104,7 @@
 				    <% @favorites.each do |f| %>
 				    	<div class="posta">
 					        <div class="col text-center">
-					          <%= link_to post_path(f.post.id) do %>
+					          <%= link_to admins_post_path(f.post.id) do %>
 					            <%= attachment_image_tag f.post, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
 					          <% end %>
 					        </div>
@@ -115,7 +112,7 @@
 					          <%= f.post.created_at.strftime('%Y/%m/%d') %>
 					        </div>
 					        <div class="post-profile">
-					        	<%= link_to user_path(f.post.user.id) do %>
+					        	<%= link_to admins_user_path(f.post.user.id) do %>
 					            	<%= attachment_image_tag f.post.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
 					            <% end %>
 					        </div>

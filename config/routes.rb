@@ -57,7 +57,7 @@ Rails.application.routes.draw do
 
   scope module: :publics do
     resources :users, only: [:show, :update, :destroy]do
-      resources :relationships, only: [:create, :destroy]
+      resources :relationships, only: [:create, :destroy, :index]
       get :follows, on: :member
       get :followers, on: :member
     end

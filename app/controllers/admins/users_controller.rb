@@ -1,11 +1,13 @@
-class Admins::UsersController < Admins::ApplicationController
+class Admins::UsersController < ApplicationController
   def index
-  	@users = User.all
+  	@users = User.order(created_at: "DESC")
   end
 
   def show
   	@user = User.find(params[:id])
-  	@posts = @user.posts.all
+  	@posts = @user.posts.order(created_at: "DESC")
+    @favorites = Favorite.where(user_id: @user.id).order(created_at: "DESC")
+    @post_comments = PostComment.where(user_id: @user.id).order(created_at: "DESC")
   end
 
   def destroy
