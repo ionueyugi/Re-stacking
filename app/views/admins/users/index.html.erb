@@ -1,2 +1,41 @@
-<h1>Admins::Users#index</h1>
-<p>Find me in app/views/admins/users/index.html.erb</p>
+<div class="container">
+	<h2>登録ユーザー一覧</h2>
+	<div class="row">
+		<div class="col">
+			<table class="table table-striped">
+				<thead>
+					<tr class="tr-user">
+						<th class="col-md-1"></th>
+					    <th class="col-md-2">名前</th>
+				      	<th class="col-md-3">フリガナ</th>
+				      	<th class="col-md-3">ニックネーム</th>
+				      	<th class="col-md-3">メールアドレス</th>
+					</tr>
+				</thead>
+				<tbody>
+					<% @users.each do |f| %>
+						<tr>
+							<td>
+								<%= link_to admins_user_path(f.id) do %>
+									<%= attachment_image_tag f, :profile_image,　format: 'jpeg', fallback: "no_image.jpg", size: "100x100", class: "img-circle pull-left profile-thumb" %>
+								<% end %>
+							</td>
+							<td>
+								<%= f.first_name %><%= f.last_name %>
+							</td>
+							<td>
+								<%= f.first_name_kana %><%= f.last_name_kana %>
+							</td>
+							<td>
+								<%= f.nick_name %>
+							</td>
+							<td>
+								<%= f.email %>
+							</td>
+						</tr>
+					<% end %>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>

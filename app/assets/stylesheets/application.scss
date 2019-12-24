@@ -10,6 +10,7 @@
  * files in this directory. Styles in this file should be added after the last require_* statement.
  * It is generally better to create a new file per style scope.
  *
+ *= require fullcalendar
  *= require_tree .
  *= require_self
  */
@@ -29,12 +30,12 @@
   padding: 0;
   box-sizing: border-box;
 }
- 
+
 h1{
   text-align: center;
   margin: 50px 0;
 }
- 
+
 .box{
   height: 300px;
   width: 90%;
@@ -42,33 +43,33 @@ h1{
   margin: 0 auto 50px;
   background-color: #eee;
 }
- 
- 
+
+
 /* ---------------------------- */
 /* --- ハンバーガーアイコン --- */
 /* ---------------------------- */
- 
- 
+
+
 #hm-icon{
   position: fixed;
   right: 20px;
   top: 20px;
   z-index: 10;
 }
- 
+
 .menu-trigger,
 .menu-trigger span {
   display: inline-block;
   transition: all .4s;
   box-sizing: border-box;
 }
- 
+
 .menu-trigger {
   position: relative;
   width: 50px;
   height: 44px;
 }
- 
+
 .menu-trigger span {
   position: absolute;
   left: 0;
@@ -77,41 +78,39 @@ h1{
   background-color: #000;
   border-radius: 4px;
 }
- 
+
 .menu-trigger span:nth-of-type(1) {
   top: 0;
 }
- 
+
 .menu-trigger span:nth-of-type(2) {
   top: 20px;
 }
- 
+
 .menu-trigger span:nth-of-type(3) {
   bottom: 0;
 }
- 
+
 .menu-trigger.active span:nth-of-type(1) {
   -webkit-transform: translateY(20px) rotate(-45deg);
   transform: translateY(20px) rotate(-45deg);
   background-color: #fff;
 }
- 
+
 .menu-trigger.active span:nth-of-type(2) {
   opacity: 0;
 }
- 
+
 .menu-trigger.active span:nth-of-type(3) {
   -webkit-transform: translateY(-20px) rotate(45deg);
   transform: translateY(-20px) rotate(45deg);
   background-color: #fff;
 }
- 
- 
+
 /* ------------------------ */
 /* ------ spメニュー ------ */
 /* ------------------------ */
- 
- 
+
 #sp-menu {
   position: fixed;
   top: 0;
@@ -123,12 +122,12 @@ h1{
   display: none;
   z-index: 9;
 }
- 
+
 #sp-menu li{
   text-align: center;
   margin-bottom: 30px;
 }
- 
+
 #sp-menu a{
   color: #fff;
   text-decoration: none;
@@ -141,7 +140,7 @@ html,body {
 }
 
 body {
-	background-image: url(tea-time-3240766_1920.jpg);
+	background-image: image-url(tea-time-3240766_1920.jpg);
 	background-size: cover;
 	background-attachment : fixed;
 }
@@ -180,5 +179,12 @@ body {
 	margin-top: 20px;
 }
 
+
+
+
   @import "bootstrap-sprockets";
   @import "bootstrap";
+  @import "slick-theme";
+  @import "slick";
+
+

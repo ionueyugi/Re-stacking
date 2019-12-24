@@ -1,2 +1,78 @@
-<h1>Publics::Posts#show</h1>
-<p>Find me in app/views/publics/posts/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="posta">
+    	<div class="col text-center">
+        <%= attachment_image_tag @post, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
+      </div>
+      <div class="post-date">
+        <%= @post.created_at.strftime('%Y/%m/%d') %>
+      </div>
+      <div class="post-profile">
+        <%= link_to user_path(@post.user.id) do %>
+          <%= attachment_image_tag @post.user, :profile_image, :fill, 120, 120, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+        <% end %>
+      </div>
+      <div class="post-content">
+        <p><%= @post.post_content %></br></p>
+      </div>
+      <div class="post-status">
+        <i class="fa fa-user"><%= @post.user.nick_name %></i>
+        <div id="favorite_btn">
+          <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
+        </div>
+        <i class="fas fa-heart">いいね <%= @post.favorites.count %></br></i>
+        <i class="far fa-comments"> コメント <%= @post.post_comments.count %></i>
+      </div>
+        <p>
+          <div class="btn-comment">
+            <% if @post.user == current_user %>
+              <p>
+                <%= link_to "削除する", post_path, class:"btn btn-danger", method: :delete, "data-confirm" => "本当に削除しますか?" %>
+              </p>
+            <% end %>
+            <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#comment">コメントする</button>
+          </div>
+        </p>
+        <div class="modal fade" id="comment" tabindex="-1" role="dialog" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <%= form_with model: [@post,@post_comment] do |f| %>
+                <div class="modal-body">
+                  <img src="", width="100" height="100", alt="No Image", id="img_prev">
+                  <%= f.text_field :comment, class: "form-control", placeholder: "コメントを入力" %>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+                  <div class="profile-button">
+                    <%= f.submit "コメントする", class: "btn btn-primary" %>
+                  </div>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+        <div class="btn-comment">
+          <%= link_to '戻る', posts_path, class:"btn btn-default btn-xs" %>
+        </div>
+    </div>
+  </div>
+  <% @post_comments.each do |c| %>
+    <div class="row">
+      <div class="col">
+        <div class="posta">
+          <div class="post-comment-profile">
+            <%= link_to user_path(c.user.id) do %>
+              <%= attachment_image_tag c.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+            <% end %>
+          </div>
+          <div class="post-comment-date">
+            <%= c.created_at.strftime('%Y/%m/%d') %>
+          </div>
+          <div class="post-content">
+            <%= c.comment %>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>

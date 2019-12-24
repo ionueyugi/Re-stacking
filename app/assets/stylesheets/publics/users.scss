@@ -1,3 +1,74 @@
 // Place all the styles related to the publics/users controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.profile1{
+	float: left;
+	padding-top: 50px;
+	padding-left: 150px;
+}
+
+.profile2{
+	float: left;
+	padding-top: 50px;
+	padding-left: 150px;
+	width: 530px;
+}
+
+.profile-button{
+	float: left;
+	padding-top: 50px;
+	padding-left: 150px;
+}
+
+.gazou{
+	width: 100%;
+}
+
+.follow-btn{
+	padding-top: 80px;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+.tab {
+  border-bottom: 3px solid #00BFFF;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 20px;
+}
+.tab li {
+  color: #333;
+  float: left;
+  margin: 0 10px -1px 0;
+  padding: 10px 20px;
+  border: 1px solid #00BFFF;
+  cursor: pointer;
+  list-style: none;
+  transition: .3s;
+}
+.tab li.active {
+  color: #fff;
+  background: #00BFFF;
+  cursor: auto;
+}
+
+.area ul {
+  display: none;
+  width: 90%;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.area ul.show {
+  display: block;
+}

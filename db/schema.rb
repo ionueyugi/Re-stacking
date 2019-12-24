@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_12_05_063615) do
+ActiveRecord::Schema.define(version: 2019_12_23_064840) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
   end
 
   create_table "evaluations", force: :cascade do |t|
-    t.integer "schedule_id"
+    t.integer "event_id"
     t.integer "achievement_score"
     t.integer "quality_score"
     t.integer "time_score"
@@ -33,6 +33,20 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.text "memo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "achievement_targetvalue_score"
+    t.integer "quality_targetvalue_score"
+    t.integer "time_targetvalue_score"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "evaluation_id"
+    t.text "title"
+    t.text "body"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.datetime "start"
+    t.datetime "end"
   end
 
   create_table "favorites", force: :cascade do |t|
@@ -68,6 +82,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.string "post_image_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "likes_count"
   end
 
   create_table "relationships", force: :cascade do |t|
@@ -75,6 +90,8 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.integer "follower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["follower_id"], name: "index_relationships_on_follower_id"
+    t.index ["following_id"], name: "index_relationships_on_following_id"
   end
 
   create_table "results", force: :cascade do |t|
@@ -86,18 +103,6 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
   create_table "rewards", force: :cascade do |t|
     t.integer "user_id"
     t.text "reward_content"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "schedules", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "evaluation_id"
-    t.date "day"
-    t.text "schedule_title"
-    t.time "start_time"
-    t.time "finish_time"
-    t.text "schedule_details"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -116,7 +121,7 @@ ActiveRecord::Schema.define(version: 2019_12_05_063615) do
     t.string "last_name_kana"
     t.string "nick_name"
     t.string "goal"
-    t.string "profiel_image_id"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
