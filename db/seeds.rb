@@ -6,7 +6,9 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-
+#管理者
+Admin.create!(email: "admin@example.jp",
+             password:  "111111")
 # id1　満点の時
 Result.create!(result_content: "大変素晴らしいです！！　この調子で継続する癖をつけましょう。")
 

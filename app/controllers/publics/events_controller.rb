@@ -1,10 +1,10 @@
 class Publics::EventsController < Publics::ApplicationController
   def index
   	@events = Event.where(user_id: current_user.id)
-    # @event = Event.new
   end
 
   def create
+    @event = Event.new
     event = Event.new
     event.attributes = {
       title: params[:title],
@@ -19,15 +19,7 @@ class Publics::EventsController < Publics::ApplicationController
   	@evaluation.save
   	event.evaluation_id = @evaluation.id
   	event.update(evaluation_id: @evaluation.id)
-    respond_to do |format|
-    	format.html { redirect_to @events }
-	    format.js
-		format.json {
-		    render json:
-		    @events.to_json(only: [:title, :start, :end, :body])
-		}
-    end
-  @events = Event.where(user_id: current_user.id)
+    @events = Event.where(user_id: current_user.id)
   end
 
   def update
@@ -41,14 +33,6 @@ class Publics::EventsController < Publics::ApplicationController
       user_id: current_user.id
     }
     event.update(event_params)
-    respond_to do |format|
-    	format.html { redirect_to @events }
-	    format.js
-      	format.json {
-        	render json:
-        	@events.to_json(only: [:title, :start, :end, :body ])
-      	}
-    end
     redirect_to events_path
   end
 
