@@ -1,0 +1,61 @@
+// Place all the styles related to the publics/schedules controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+ /* テキストIME */
+    input {
+       ime-mode: disabled;
+    }
+    input.ime-active {
+       ime-mode: active;
+    }
+    input.ime-inactive {
+       ime-mode: inactive;
+    }
+
+    /* モーダルダイアログ */
+    .panel-body > .container > .row, .modal-body > .container > .row {
+        margin: 10px;
+    }
+
+    .container > .row > div.required label:after {
+        content:"*";color:red;
+    }
+
+    .form-inline > .form-group > input.ymd {
+        width: 110px;
+    }
+    .form-inline > .form-group > input.ymdHm {
+        width: 160px;
+    }
+    .hidden {
+        visibility: hidden;
+        display: none;
+    }
+
+
+.arrow_box {
+  display: none;
+  position: absolute;
+  padding: 16px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  border-radius: 8px;
+  background: #333;
+  color: #fff;
+}
+
+.arrow_box:after {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  margin-left: -10px;
+  border: solid transparent;
+  border-color: rgba(51, 51, 51, 0);
+  border-bottom-color: #333;
+  border-width: 10px;
+  pointer-events: none;
+  content: " ";
+}

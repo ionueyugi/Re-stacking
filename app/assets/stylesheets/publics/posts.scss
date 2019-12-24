@@ -1,3 +1,75 @@
 // Place all the styles related to the publics/posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.block.block-image{
+	background-color: rgba(255,255,255,0.85);
+}
+.block-image img{
+	width: 70%;
+	margin: 30px auto;
+	margin-left: 115px;
+}
+
+.post-profile{
+    padding-top: 5%;
+    padding-left: 2%;
+}
+
+.post-date{
+    padding-left: 2%;
+
+}
+
+.post-content {
+    width: 70%;
+    margin:  0 auto;
+    padding: 0.5em 1em;
+    color: black;/*文字色*/
+    background: #FFF;
+    border: solid 1px #6091d3;/*線*/
+    border-radius: 10px;/*角の丸み*/
+}
+
+.post-status{
+    width: 60%;
+    padding-left: 15%;
+    padding-top: 1%;
+}
+.posta{
+    background-color: white;
+    padding: 20px;
+    margin: 30px;
+}
+
+.btn-comment{
+    width: 20%;
+    padding-left: 70%;
+}
+
+.iine__button{
+    background: linear-gradient(to right, #feb400,);
+    line-height: 42px;
+    color: #6d3701;
+    font-size: 14px;
+    display: inline-block;
+    padding: 0 18px;
+    border-radius: 100px;
+    font-weight: bold;
+ }
+
+.post-comment-profile{
+    width: 10%;
+    padding-bottom: 5%;
+}
+
+.post-comment-date{
+    position: relative; top: 40px; right:60px;
+}
+
+div#header-fixed{
+    position: fixed;            /* ヘッダーの固定 */
+    top: 100px;                   /* 位置(上0px) */
+    left: 30px;                  /* 位置(右0px) */
+    width: 100%;                /* 横幅100%　*/
+}

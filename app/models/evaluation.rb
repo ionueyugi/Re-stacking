@@ -1,3 +1,3 @@
 class Evaluation < ApplicationRecord
-	belongs_to :schedule
+	belongs_to :event
 end

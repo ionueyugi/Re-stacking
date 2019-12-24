@@ -1,2 +1,56 @@
-<h1>Admins::Results#index</h1>
-<p>Find me in app/views/admins/results/index.html.erb</p>
+<div class="container">
+	<h2>結果変更フォーム</h2>
+	<div class="row">
+		<div class="col">
+			<table class="table table-striped">
+				<thead>
+					<tr class="tr-user">
+						<th class="col-md-2"></th>
+					    <th class="col-md-9">結果内容</th>
+				      	<th class="col-md-1"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr>
+						<th>15点満点</th>
+						<td>
+							<%= @result1.result_content %>
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">変更する</button>
+						</td>
+					</tr>
+					<tr>
+						<th>10 ~ 14点</th>
+						<td>
+							<%= @result2.result_content %>
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">変更する</button>
+						</td>
+					</tr>
+					<tr>
+						<th>3 ~ 9点</th>
+						<td>
+							<%= @result3.result_content %>
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">変更する</button>
+						</td>
+					</tr>
+					<tr>
+						<th>0点 が含まれている時</th>
+						<td>
+							<%= @result4.result_content %>
+						</td>
+						<td>
+							<button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#edit">変更する</button>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+
+
