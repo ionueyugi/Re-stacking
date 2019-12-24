@@ -1,6 +1,5 @@
 class Publics::RelationshipsController < Publics::ApplicationController
 	def index
-		
 	end
 	def create
 	  @user = User.find(params[:follower_id])
