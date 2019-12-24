@@ -78,3 +78,6 @@ gem 'gon'
 gem 'jquery-turbolinks'
 gem 'whenever', require: false
 
+group :production do
+  gem 'mysql2'
+end
