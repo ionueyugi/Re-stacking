@@ -21,6 +21,10 @@
         </div>
         <div class="post-status">
           <i class="fa fa-user"><%= f.user.nick_name %></i>
+          <div id="<%= f.id %>">
+            <%= render 'publics/favorites/favorite', f: f %>
+          </div>
+
           <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
           <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
         </div>
@@ -28,10 +32,6 @@
     </div>
   <% end %>
 </div>
- <div id="<%= f.id %>">
-  <%= render 'publics/favorites/favorite', f: f %>
-</div>
-
 
 <div id="header-fixed">
   <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post"><i class="fab fa-twitch"></i>投稿する</button>
