@@ -39,3 +39,53 @@
 
 }
 
+.c{
+	width: 100%;
+}
+
+@media only screen and (min-width:360px) and (max-width:640px) {
+/*スマホ用のcssを記述*/
+
+.row{
+	width: 100%;
+}
+.title-saitoname{
+	position: relative; bottom:20px;
+	position: relative; left:15px;
+}
+
+.text3{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	position: relative; left:10px;
+}
+
+
+.c{
+	width: 100%;
+}
+
+}
+
+@media only screen and (min-width:640px) and (max-width:1024px) {
+/*tablet用のcssを記述*/
+
+.row{
+	width: 100%;
+}
+.title-saitoname{
+	position: relative; bottom:20px;
+	position: relative; left:15px;
+}
+
+.text3{
+	margin-top: 100px;
+	margin-bottom: 100px;
+	position: relative; left:10px;
+}
+
+
+.c{
+	width: 100%;
+}
+}
