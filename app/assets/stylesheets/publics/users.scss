@@ -72,3 +72,48 @@
 .area ul.show {
   display: block;
 }
+
+@media only screen and (min-width:360px) and (max-width:640px) {
+/*スマホ用のcssを記述*/
+
+.profile1{
+  padding-top: 50px;
+  padding-left: 80px;
+}
+
+.profile2{
+  padding-top: 50px;
+  padding-left: 80px;
+  width: 530px;
+}
+
+.profile-button{
+  padding-top: 50px;
+  padding-left: 80px;
+}
+}
+
+@media only screen and (min-width:640px) and (max-width:1024px) {
+/*tablet用のcssを記述*/
+
+.profile1{
+  position: relative; top:100px;
+  position: relative; right:100px;
+}
+
+.profile2{
+  position: relative; bottom:40px;
+  position: relative; left:40px;
+}
+
+.profile-button{
+  position: relative; bottom:170px;
+  position: relative; left:300px;
+}
+
+.clearfix::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+}

@@ -33,7 +33,9 @@
 					</p>
 				<% end %>
 			</div>
-		    <%= render 'publics/users/follow_form', users: @user %>
+			<div class="profile-button">
+		    	<%= render 'publics/users/follow_form', users: @user %>
+		    </div>
 			<div class="edit clearfix">
 				<% if @user == current_user %>
 					<div class="profile-button">
