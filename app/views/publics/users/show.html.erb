@@ -115,9 +115,9 @@
 					        </div>
 					        <div class="post-status">
 					          <i class="fa fa-user"><%= f.user.nick_name %></i>
-					          <div id="favorite_btn">
-					            <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
-					          </div>
+							<div id="favorite_btn">
+					          <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
+					        </div>
 					          <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
 					          <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
 					        </div>
