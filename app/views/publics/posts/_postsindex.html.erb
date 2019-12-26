@@ -28,9 +28,10 @@
     </div>
   <% end %>
 </div>
- <div id="favorite_btn">
-  <%= render partial: 'publics/favorites/favorite', collection: @posts, as: :post %>
+ <div id="<%= f.id %>">
+  <%= render 'publics/favorites/favorite', f: f %>
 </div>
+
 
 <div id="header-fixed">
   <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post"><i class="fab fa-twitch"></i>投稿する</button>
