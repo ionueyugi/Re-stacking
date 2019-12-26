@@ -1,4 +1,7 @@
 class Publics::EvaluationsController < ApplicationController
+
+  before_action :authenticate_user!
+
   def show
   	@evaluation = Evaluation.find(params[:id])
   	gon.achievement_targetvalue = @evaluation.achievement_targetvalue_score

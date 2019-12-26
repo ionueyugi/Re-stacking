@@ -1,4 +1,5 @@
 class Publics::FavoritesController < Publics::ApplicationController
+  before_action :authenticate_user!
 	before_action :set_variables
 
   def create

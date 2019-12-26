@@ -1,4 +1,5 @@
 class Publics::PostsController < Publics::ApplicationController
+  before_action :authenticate_user!
   def index
     @posts = Post.order(created_at: "DESC")
     @post = Post.new

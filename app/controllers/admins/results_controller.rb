@@ -1,4 +1,5 @@
 class Admins::ResultsController < ApplicationController
+  before_action :authenticate_admin!
   def index
   	@result1 = Result.find(1)
   	@result2 = Result.find(2)
