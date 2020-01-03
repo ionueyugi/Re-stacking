@@ -2,6 +2,7 @@ class Publics::PostsController < Publics::ApplicationController
   before_action :authenticate_user!
   def index
     @posts = Post.order(created_at: "DESC")
+    @postusers = Post.where(user_id: current_user.followings).order(created_at: "DESC")
     @post = Post.new
   end
 
