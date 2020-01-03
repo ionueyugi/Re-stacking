@@ -1,7 +1,7 @@
 class Publics::AboutsController < ApplicationController
-	def index
+	def about
 	end
 
-	def about
+	def about2
 	end
 end
