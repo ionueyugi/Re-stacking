@@ -51,8 +51,8 @@ Rails.application.routes.draw do
   end
 
   scope module: :publics do
-    resources :abouts, only: [:index]
     get '/about' => 'abouts#about'
+    get '/abouts/about2' => 'abouts#about2'
   end
 
   scope module: :publics do
