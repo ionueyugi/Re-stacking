@@ -1,38 +1,80 @@
 <div class="container">
-  <h2>みんなの投稿</h2>
-  <% @posts.each do |f| %>
-    <div class="row">
-      <div class="posta">
-        <div class="col text-center">
-          <%= link_to post_path(f.id) do %>
-            <%= attachment_image_tag f, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
-          <% end %>
-        </div>
-        <div class="post-date">
-          <%= f.created_at.strftime('%Y/%m/%d') %>
-        </div>
-        <div class="post-profile">
-          <%= link_to user_path(f.user.id) do %>
-            <%= attachment_image_tag f.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
-          <% end %>
-        </div>
-        <div class="post-content">
-          <p><%= f.post_content %></br></p>
-        </div>
-        <div class="post-status">
-          <i class="fa fa-user"><%= f.user.nick_name %></i>
-          <div id="<%= f.id %>">
-            <%= render 'publics/favorites/favorite', f: f %>
+  <div class="tab clearfix">
+    <li class="active">みんなの投稿</li>
+    <li>フォローユーザーのみ</li>
+  </div>
+  <!-- コンテンツ全体を非表示にし、showクラスが付いたコンテンツのみ表示 -->
+  <div class="area">
+    <ul class="show">
+      <!-- 全userの投稿一覧 -->
+      <% posts.each do |f| %>
+        <div class="row">
+          <div class="posta">
+            <div class="col text-center">
+              <%= link_to post_path(f.id) do %>
+                <%= attachment_image_tag f, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
+              <% end %>
+            </div>
+            <div class="post-date">
+              <%= f.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <div class="post-profile">
+              <%= link_to user_path(f.user.id) do %>
+                <%= attachment_image_tag f.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+              <% end %>
+            </div>
+            <div class="post-content">
+              <p><%= f.post_content %></br></p>
+            </div>
+            <div class="post-status">
+              <i class="fa fa-user"><%= f.user.nick_name %></i>
+              <div id="<%= f.id %>">
+                <%= render 'publics/favorites/favorite', f: f %>
+              </div>
+              <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
+            </div>
           </div>
-
-          <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
-          <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
         </div>
-      </div>
-    </div>
-  <% end %>
+      <% end %>
+    </ul>
+    <ul>
+      <!-- フォローしているuserの投稿一覧 -->
+      <% @postusers.each do |f| %>
+        <div class="row">
+          <div class="posta">
+            <div class="col text-center">
+              <%= link_to post_path(f.id) do %>
+                <%= attachment_image_tag f, :post_image, :fill, 500, 500, format: 'jpeg'%></br>
+              <% end %>
+            </div>
+            <div class="post-date">
+              <%= f.created_at.strftime('%Y/%m/%d') %>
+            </div>
+            <div class="post-profile">
+              <%= link_to user_path(f.user.id) do %>
+                <%= attachment_image_tag f.user, :profile_image, :fill, 80, 80, fallback: "no_image.jpg", class: "img-circle pull-left profile-thumb" %>
+              <% end %>
+            </div>
+            <div class="post-content">
+              <p><%= f.post_content %></br></p>
+            </div>
+            <div class="post-status">
+              <i class="fa fa-user"><%= f.user.nick_name %></i>
+              <div id="<%= f.id %>">
+                <%= render 'publics/favorites/favorite', f: f %>
+              </div>
+
+              <i class="fas fa-heart">いいね <%= f.favorites.count %></br></i>
+              <i class="far fa-comments"> コメント <%= f.post_comments.count %></i>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    </ul>
+  </div>
 </div>
 
+<!-- 投稿ボタン -->
 <div id="header-fixed">
   <button type="button" class="btn btn-primary mt-5" data-toggle="modal" data-target="#post"><i class="fab fa-twitch"></i>投稿する</button>
 </div>
