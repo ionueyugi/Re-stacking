@@ -23,9 +23,7 @@
 			</div>
 			<div class="event-profile">
 				<span class="box-title">コメント</span>
-				<% if @evaluation.achievement_score == 0 || @evaluation.quality_score = 0 || @evaluation.time_score = 0%>
-					<%= @result4.result_content %>
-				<% else %>
+		
 					<% if @total_point.to_i == 15 %>
 						<%= @result1.result_content %>
 							<% elsif @total_point.to_i >= 10 && @total_point.to_i <= 14 %>
@@ -35,7 +33,7 @@
 									<% elsif @total_point.to_i == 0 %>
 									<%= @result4.result_content %>
 					<% end %>
-				<% end %>
+				
 			</div>
 			<div style="width:100%;">
 				<canvas id="canvas"></canvas>
