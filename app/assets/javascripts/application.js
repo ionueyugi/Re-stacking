@@ -111,7 +111,7 @@ $(document).on('turbolinks:load', function() {
 });
 
 
-
+// トップページのサーチのモーション
 $(document).ready(function() {
   var $magic = $(".magic"),
       magicWHalf = $magic.width() / 2;
