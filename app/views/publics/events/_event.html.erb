@@ -2,6 +2,7 @@
 	<h2>カレンダー</h2>
 	<div class="row">
 		<div id="calendar"></div>
+
 		<!-- 追加 -->
 		<div id="inputScheduleForm" class="modal fade" tabindex="-1">
 			<div class="modal-dialog modal-nm">
@@ -36,9 +37,16 @@
 				</div>
 			</div>
 		</div>
+
 		<!-- 編集 -->
 		<div id="inputEditForm">
 			<%= render 'publics/events/edit', events: @events %>
+		</div>
+
+		<!-- 吹き出しヒント -->
+		<div class="balloon1-top">
+			<p>日付をクッリクし、予定を登録しましょう。</p>
+			<P>登録した予定をクリックすることで編集や評価ページに進むことができます。</p>
 		</div>
 	</div>
 </div>
