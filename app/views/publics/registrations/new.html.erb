@@ -30,7 +30,7 @@
 
         <div class="field">
           <%= f.label :メールアドレス %>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+          <%= f.email_field :email, placeholder: "users@example.com",  autofocus: true, autocomplete: "email" %>
         </div>
 
         <div class="field">
@@ -38,6 +38,12 @@
           <% if @minimum_password_length %>
           <% end %>
           <%= f.password_field :password, placeholder: "6桁以上で入力してください", autocomplete: "new-password" %>
+        </div>
+
+        <!-- 吹き出しヒント -->
+        <div class="balloon1-top">
+          <p>＊全ての内容をご記入の上、登録完了を押してください。</p>
+          <P>(登録完了後、ホームよりプロフィールの編集は可能です)</p>
         </div>
 
         <div class="actions_btn">
