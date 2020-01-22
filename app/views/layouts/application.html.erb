@@ -16,12 +16,24 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/4.2.0/daygrid/main.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.1.4/Chart.bundle.min.js"></script>
   </head>
+
+  <header>
+    <nav class="navbar navbar-inverse">
+      <div class="container-fluid">
+        <i class="fas fa-running"></i> Re-stacking
+        </a>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarEexample7">
+        <p class="navbar-text navbar-right">ようこそ さん。</p>
+      </div>
+    </nav>
+  </header>
     <div id="sp-menu">
       <h2>MENU</h2>
       <% if user_signed_in? %>
         <ul>
           <li>
-            <%= link_to 'ログアウト',destroy_user_session_path,method: :delete %>
+            <i class="fas fa-sign-out-alt"></i><%= link_to 'ログアウト',destroy_user_session_path,method: :delete %>
           </li>
           <li>
             <li class="notification"><%= link_to '通知',notifications_path %>
@@ -29,38 +41,38 @@
               <i class="fa fa-circle notification-circle"></i>
             <% end %>
           <li>
-            <%= link_to 'ホーム', user_path(current_user.id) %>
+            <i class="fas fa-home"></i><%= link_to 'ホーム', user_path(current_user.id) %>
           </li>
           <li>
-           <%= link_to 'カレンダー',events_path %>
+           <i class="far fa-calendar-alt"></i><%= link_to 'カレンダー',events_path %>
           </li>
           <li>
-           <%= link_to 'みんなの投稿',posts_path %>
+           <i class="fab fa-usps"></i><%= link_to 'みんなの投稿',posts_path %>
           </li>
         </ul>
         <% elsif admin_signed_in? %>
           <ul>
             <li>
-              <%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
+              <i class="fas fa-sign-out-alt"></i><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %>
             </li>
             <li>
-              <%= link_to '登録ユーザー一覧',admins_users_path %>
+              <i class="fas fa-users"></i><%= link_to '登録ユーザー一覧',admins_users_path %>
             </li>
             <li>
-              <%= link_to '投稿一覧', admins_posts_path %>
+              <i class="fab fa-usps"></i><%= link_to '投稿一覧', admins_posts_path %>
             </li>
             <li>
-              <%= link_to '結果内容変更', admins_results_path %>
+              <i class="fas fa-edit"></i><%= link_to '結果内容変更', admins_results_path %>
             </li>
           </ul>
         <% else %>
         <span></span><br>
           <ul>
             <li>
-              <%= link_to "会員登録", new_user_registration_path %>
+              <i class="fas fa-users"></i><%= link_to "メンバー登録", new_user_registration_path %>
             </li>
             <li>
-              <%= link_to "ログイン", new_user_session_path %>
+              <i class="fas fa-sign-in-alt"><%= link_to "ログイン", new_user_session_path %>
             </li>
           </ul>
       <% end %>
