@@ -22,8 +22,9 @@
 				<canvas id="myChart"></canvas>
 			</div>
 			<div class="event-profile">
+
+				<!-- 結果に応じたコメント -->
 				<span class="box-title">コメント</span>
-		
 					<% if @total_point.to_i == 15 %>
 						<%= @result1.result_content %>
 							<% elsif @total_point.to_i >= 10 && @total_point.to_i <= 14 %>
@@ -33,12 +34,14 @@
 									<% elsif @total_point.to_i == 0 %>
 									<%= @result4.result_content %>
 					<% end %>
-				
 			</div>
-			<div style="width:100%;">
-				<canvas id="canvas"></canvas>
-			</div>
+			<!-- 吹き出しヒント -->
+		    <div class="balloon1-top">
+		      <p>目標値を達成することができたら自分にご褒美をあげましょう!!</p>
+		    </div>
 		</div>
+
+        <!-- 評価の選択ボタン -->
 		<div class="col-lg-3">
 		<%= render 'publics/evaluations/evaluation_update', evaluations: @evaluation %>
 		</div>
